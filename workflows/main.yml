@@ -2,7 +2,8 @@ name: GitHub Actions - Main Workflow
 
 on:
   push:
-    branches: ["*"]
+    branches: 
+      - "**"
 
 jobs:
   build:
