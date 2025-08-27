@@ -1,18 +1,26 @@
 name: GitHub Actions - Main Workflow
 
+# Define o evento que irá acionar o workflow
 on:
   push:
-    branches: 
-      - "**"
-
+    branches:
+      - '**' # Aciona em qualquer push para qualquer branch
+  
+# Define os trabalhos (jobs) a serem executados
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4 # Use a versão mais recente
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4 # Use a versão mais recente
         with:
           node-version: '20'
-
-      - run: npm run message
+          
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Run Script
+        run: npm run message
